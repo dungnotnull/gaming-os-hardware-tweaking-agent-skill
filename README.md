@@ -2,7 +2,6 @@
 
 **OS & Hardware Tweaking for Gamers (Low Latency & High FPS)**
 
-[![CI](https://github.com/example/gaming-os-hardware-tweaking/actions/workflows/ci.yml/badge.svg)](https://github.com/example/gaming-os-hardware-tweaking/actions/workflows/ci.yml)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![PyPI version](https://img.shields.io/badge/pypi-v1.1.0-blue.svg)](https://pypi.org/project/gaming-os-hardware-tweaking/)
