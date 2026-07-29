@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gaming-os-hardware-tweaking/schemas/hook_context.schema.json",
+  "title": "HookContext",
+  "type": "object",
+  "required": ["event", "run_id"],
+  "properties": {
+    "event": { "type": "string", "enum": [
+      "orchestration.start", "orchestration.end",
+      "step.pre", "step.post", "step.error",
+      "gate.pre", "gate.post", "gate.fail",
+      "tool.pre", "tool.post", "tool.error",
+      "skill.resolve", "degradation", "context.overflow", "retry"
+    ]},
+    "timestamp": { "type": "number" },
+    "run_id": { "type": "string" },
+    "skill_name": { "type": "string" },
+    "step_index": { "type": ["integer", "null"] },
+    "step_total": { "type": ["integer", "null"] },
+    "gate_name": { "type": "string" },
+    "tool_name": { "type": "string" },
+    "inputs": { "type": "object" },
+    "outputs": { "type": "object" },
+    "state": { "type": "object" },
+    "error": { "type": ["string", "null"] },
+    "elapsed_seconds": { "type": ["number", "null"] },
+    "metadata": { "type": "object" },
+    "errors": { "type": "array", "items": { "type": "string" } }
+  }
+}

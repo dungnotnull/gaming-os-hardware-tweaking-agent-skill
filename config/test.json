@@ -1,0 +1,28 @@
+{
+  "_comment": "Test profile: deterministic, no external I/O, low budgets.",
+  "app_name": "gaming-os-hardware-tweaking",
+  "version": "1.1.0",
+  "environment": "test",
+  "debug": false,
+  "llm": {
+    "provider": "none",
+    "context_window_tokens": 8000,
+    "reserve_output_tokens": 512,
+    "max_retries": 1,
+    "timeout_seconds": 5
+  },
+  "flags": {
+    "enable_web_search": false,
+    "enable_web_fetch": false,
+    "enable_knowledge_crawl": false,
+    "enable_quality_gate_auto_fix": true,
+    "max_gate_retries": 1
+  },
+  "logging": {
+    "enable_console": false,
+    "enable_file": false
+  },
+  "orchestration": {
+    "context_token_budget": 4000
+  }
+}

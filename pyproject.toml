@@ -1,0 +1,100 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel>=0.41.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gaming-os-hardware-tweaking"
+version = "1.1.0"
+description = "OS & Hardware Tweaking for Gamers — Low Latency & High FPS optimization framework"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "gaming-os-hardware-tweaking contributors"}
+]
+keywords = [
+    "gaming",
+    "os-tweaking",
+    "latency-optimization",
+    "fps-optimization",
+    "nvidia-reflex",
+    "vrr",
+    "gaming-performance",
+    "hardware-tuning",
+    "input-lag",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Hardware",
+    "Topic :: System :: Operating System",
+    "Topic :: Games/Entertainment",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31.0",
+    "feedparser>=6.0.10",
+    "python-dateutil>=2.8.2",
+]
+
+[project.optional-dependencies]
+crawl = [
+    "crawl4ai>=0.3.0",
+]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-benchmark>=4.0.0",
+    "mypy>=1.5.0",
+    "ruff>=0.1.0",
+    "black>=23.0.0",
+]
+all = [
+    "gaming-os-hardware-tweaking[crawl,dev]",
+]
+
+[project.urls]
+Homepage = "https://github.com/example/gaming-os-hardware-tweaking"
+Documentation = "https://github.com/example/gaming-os-hardware-tweaking#readme"
+Repository = "https://github.com/example/gaming-os-hardware-tweaking"
+Issues = "https://github.com/example/gaming-os-hardware-tweaking/issues"
+Changelog = "https://github.com/example/gaming-os-hardware-tweaking/blob/main/CHANGELOG.md"
+
+[project.scripts]
+gaming-tweaks-profile = "gaming_tweaks.cli:main_profile"
+gaming-tweaks-recommend = "gaming_tweaks.cli:main_recommend"
+gaming-tweaks-benchmark = "gaming_tweaks.cli:main_benchmark"
+gaming-tweaks-update-kb = "gaming_tweaks.cli:main_update_kb"
+gaming-tweaks-harness = "gaming_tweaks.orchestrator_cli:main_harness"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "SIM", "C4"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short --strict-markers"
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+strict_optional = true
+ignore_missing_imports = true

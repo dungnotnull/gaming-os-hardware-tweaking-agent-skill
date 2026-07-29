@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gaming-os-hardware-tweaking/schemas/app_config.schema.json",
+  "title": "AppConfig",
+  "type": "object",
+  "required": ["app_name", "version", "environment"],
+  "properties": {
+    "app_name": { "type": "string" },
+    "version": { "type": "string" },
+    "environment": { "type": "string", "enum": ["production", "staging", "development", "test"] },
+    "debug": { "type": "boolean" },
+    "llm": { "$ref": "#/definitions/LLMConfig" },
+    "flags": { "$ref": "#/definitions/FeatureFlags" },
+    "knowledge": { "$ref": "#/definitions/KnowledgeConfig" },
+    "logging": { "$ref": "#/definitions/LoggingConfig" },
+    "orchestration": { "$ref": "#/definitions/OrchestrationConfig" }
+  },
+  "definitions": {
+    "LLMConfig": {
+      "type": "object",
+      "properties": {
+        "provider": { "type": "string", "enum": ["claude", "openai", "local", "none"] },
+        "model": { "type": "string" },
+        "max_tokens": { "type": "integer", "exclusiveMinimum": 0 },
+        "temperature": { "type": "number", "minimum": 0, "maximum": 2 },
+        "top_p": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+        "timeout_seconds": { "type": "integer", "exclusiveMinimum": 0 },
+        "max_retries": { "type": "integer", "minimum": 0 },
+        "retry_backoff_seconds": { "type": "number", "minimum": 0 },
+        "fallback_provider": { "type": "string", "enum": ["claude", "openai", "local", "none"] },
+        "fallback_model": { "type": "string" },
+        "context_window_tokens": { "type": "integer", "exclusiveMinimum": 0 },
+        "reserve_output_tokens": { "type": "integer", "minimum": 0 },
+        "system_prompt_path": { "type": "string" }
+      }
+    },
+    "FeatureFlags": {
+      "type": "object",
+      "properties": {
+        "enable_web_search": { "type": "boolean" },
+        "enable_web_fetch": { "type": "boolean" },
+        "enable_knowledge_crawl": { "type": "boolean" },
+        "enable_bilingual_output": { "type": "boolean" },
+        "enable_chain_of_thought_router": { "type": "boolean" },
+        "enable_hooks": { "type": "boolean" },
+        "enable_tool_metrics": { "type": "boolean" },
+        "enable_state_sync": { "type": "boolean" },
+        "enable_quality_gate_auto_fix": { "type": "boolean" },
+        "enable_graceful_degradation": { "type": "boolean" },
+        "strict_evidence_tiers": { "type": "boolean" },
+        "enforce_disclosure_before_conclusion": { "type": "boolean" },
+        "max_router_retries": { "type": "integer", "minimum": 0 },
+        "max_gate_retries": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "KnowledgeConfig": {
+      "type": "object",
+      "properties": {
+        "brain_path": { "type": "string" },
+        "sources": { "type": "array", "items": { "type": "string" } },
+        "max_results_per_source": { "type": "integer", "exclusiveMinimum": 0 },
+        "request_timeout_seconds": { "type": "integer", "exclusiveMinimum": 0 },
+        "rate_limit_rps": { "type": "number", "exclusiveMinimum": 0 },
+        "rate_limit_jitter_seconds": { "type": "number", "minimum": 0 },
+        "parallel_workers": { "type": "integer", "exclusiveMinimum": 0 },
+        "min_score_threshold": { "type": "number", "minimum": 0, "maximum": 1 },
+        "dedup_hash_algorithm": { "type": "string", "enum": ["sha256", "sha1", "md5"] },
+        "max_gap_fill_queries": { "type": "integer", "minimum": 0 },
+        "academic_only": { "type": "boolean" },
+        "news_only": { "type": "boolean" },
+        "dry_run": { "type": "boolean" }
+      }
+    },
+    "LoggingConfig": {
+      "type": "object",
+      "properties": {
+        "level": { "type": "string", "enum": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] },
+        "log_dir": { "type": "string" },
+        "enable_file": { "type": "boolean" },
+        "enable_console": { "type": "boolean" },
+        "json_format": { "type": "boolean" },
+        "max_file_size_mb": { "type": "integer", "exclusiveMinimum": 0 },
+        "backup_count": { "type": "integer", "minimum": 0 },
+        "capture_warnings": { "type": "boolean" }
+      }
+    },
+    "OrchestrationConfig": {
+      "type": "object",
+      "properties": {
+        "skills_dir": { "type": "string" },
+        "default_language": { "type": "string", "enum": ["en", "vi"] },
+        "supported_languages": { "type": "array", "items": { "type": "string" } },
+        "execution_order": { "type": "array", "items": { "type": "string" } },
+        "quality_gates": { "type": "array", "items": { "type": "string", "pattern": "^[UG]\\d+$" } },
+        "context_token_budget": { "type": "integer", "exclusiveMinimum": 0 },
+        "preserve_history_between_steps": { "type": "boolean" },
+        "max_degradation_level": { "type": "integer", "minimum": 0, "maximum": 4 }
+      }
+    }
+  }
+}

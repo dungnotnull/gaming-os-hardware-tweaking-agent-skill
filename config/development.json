@@ -1,0 +1,32 @@
+{
+  "_comment": "Development profile: verbose logging, lower context budget, debug enabled.",
+  "app_name": "gaming-os-hardware-tweaking",
+  "version": "1.1.0",
+  "environment": "development",
+  "debug": true,
+  "llm": {
+    "provider": "claude",
+    "model": "claude-sonnet-4-5",
+    "max_tokens": 4096,
+    "temperature": 0.1,
+    "context_window_tokens": 100000,
+    "reserve_output_tokens": 1024,
+    "max_retries": 2,
+    "timeout_seconds": 30
+  },
+  "flags": {
+    "enable_hooks": true,
+    "enable_quality_gate_auto_fix": true,
+    "enable_graceful_degradation": true,
+    "max_gate_retries": 1
+  },
+  "logging": {
+    "level": "DEBUG",
+    "log_dir": "logs",
+    "enable_console": true,
+    "json_format": false
+  },
+  "orchestration": {
+    "context_token_budget": 50000
+  }
+}

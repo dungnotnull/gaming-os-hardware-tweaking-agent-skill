@@ -1,0 +1,154 @@
+{
+  "skill_id": "204-gaming-os-hardware-tweaking",
+  "skill_name": "gaming-os-hardware-tweaking",
+  "domain": "Gaming System Optimization & Input Latency Tuning",
+  "version": "1.1.0",
+  "status": "PRODUCTION_READY",
+  "last_updated": "2026-07-21",
+  "phases": {
+    "0": {
+      "name": "Research & Skill Architecture",
+      "status": "complete",
+      "percent": 100,
+      "deliverables": [
+        "CLAUDE.md",
+        "PROJECT-detail.md",
+        "PROJECT-DEVELOPMENT-PHASE-TRACKING.md"
+      ]
+    },
+    "1": {
+      "name": "Core Sub-Skills",
+      "status": "complete",
+      "percent": 100,
+      "deliverables": [
+        "skills/sub-gather-requirements.md",
+        "skills/sub-evidence-collector.md",
+        "skills/sub-core-analysis.md",
+        "skills/sub-knowledge-updater.md",
+        "skills/sub-advisor.md"
+      ]
+    },
+    "2": {
+      "name": "Main Harness + Quality Gates",
+      "status": "complete",
+      "percent": 100,
+      "deliverables": [
+        "skills/main.md"
+      ]
+    },
+    "3": {
+      "name": "SECOND-KNOWLEDGE-BRAIN Pipeline",
+      "status": "complete",
+      "percent": 100,
+      "deliverables": [
+        "SECOND-KNOWLEDGE-BRAIN.md",
+        "tools/knowledge_updater.py",
+        "tools/test_knowledge_updater.py"
+      ]
+    },
+    "4": {
+      "name": "Testing & Validation",
+      "status": "complete",
+      "percent": 100,
+      "deliverables": [
+        "tests/test-scenarios.md",
+        "tools/run_test_scenarios.py",
+        "tests/TEST_RESULTS.md"
+      ]
+    },
+    "5": {
+      "name": "Integration & Polish",
+      "status": "complete",
+      "percent": 100,
+      "deliverables": [
+        "LICENSE",
+        "pyproject.toml",
+        "tools/validate_project.py",
+        "CHANGELOG.md",
+        "CONTRIBUTING.md",
+        "CODE_OF_CONDUCT.md",
+        "src/ package production tools",
+        "GitHub CI/CD workflows"
+      ]
+    },
+    "6": {
+      "name": "Flexible Agent & Skill Architecture",
+      "status": "complete",
+      "percent": 100,
+      "deliverables": [
+        "SKILL.md",
+        "src/gaming_tweaks/config.py",
+        "src/gaming_tweaks/hooks.py",
+        "src/gaming_tweaks/tools.py",
+        "src/gaming_tweaks/registry.py",
+        "src/gaming_tweaks/router.py",
+        "src/gaming_tweaks/orchestrator.py",
+        "config/default.json",
+        "config/development.json",
+        "config/test.json",
+        "config/README.md",
+        "scripts/setup_env.py",
+        "scripts/seed_knowledge.py",
+        "scripts/ingest_knowledge.py",
+        "scripts/validate_architecture.py",
+        "scripts/README.md",
+        "references/prompts/*.md (5 base templates)",
+        "references/domain/domain_knowledge.md",
+        "references/domain/source_map.md",
+        "references/README.md",
+        "assets/schemas/*.json (6 JSON schemas)",
+        "assets/diagrams/system_architecture.md",
+        "assets/README.md",
+        "tests/test_agent_architecture.py (82 tests)"
+      ]
+    }
+  },
+  "production_tools": [
+    "src/gaming_tweaks/__init__.py",
+    "src/gaming_tweaks/system_profiler.py",
+    "src/gaming_tweaks/tweak_recommender.py",
+    "src/gaming_tweaks/config_manager.py",
+    "src/gaming_tweaks/benchmark_validator.py",
+    "src/gaming_tweaks/logging_setup.py"
+  ],
+  "test_suites": [
+    "tests/test_system_profiler.py",
+    "tests/test_tweak_recommender.py",
+    "tests/test_config_manager.py",
+    "tests/test_benchmark_validator.py",
+    "tests/test_knowledge_updater.py",
+    "tests/test_agent_architecture.py"
+  ],
+  "ci_cd": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/release.yml"
+  ],
+  "open_source_docs": [
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "total_checks_passed": true,
+  "production_ready": true,
+  "agent_architecture": [
+    "src/gaming_tweaks/config.py",
+    "src/gaming_tweaks/hooks.py",
+    "src/gaming_tweaks/tools.py",
+    "src/gaming_tweaks/registry.py",
+    "src/gaming_tweaks/router.py",
+    "src/gaming_tweaks/orchestrator.py"
+  ],
+  "modular_dirs": [
+    "config",
+    "scripts",
+    "references",
+    "assets"
+  ],
+  "phase6_validators": [
+    "scripts/validate_architecture.py",
+    "tools/validate_project.py",
+    "tools/run_test_scenarios.py"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gaming-os-hardware-tweaking/schemas/skill_spec.schema.json",
+  "title": "SkillSpec",
+  "type": "object",
+  "required": ["name", "description", "body_markdown"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "path": { "type": "string" },
+    "role": { "type": "string" },
+    "tools": { "type": "array", "items": { "type": "string" } },
+    "gates": { "type": "array", "items": { "type": "string", "pattern": "^[UG]\\d+$" } },
+    "inputs_schema": { "type": "object" },
+    "outputs_schema": { "type": "object" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "category": { "type": "string", "enum": ["domain", "harness", "utility"] },
+    "version": { "type": "string" },
+    "body_markdown": { "type": "string", "minLength": 120 },
+    "raw_frontmatter": { "type": "object", "additionalProperties": { "type": "string" } }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gaming-os-hardware-tweaking/schemas/tool_schema.schema.json",
+  "title": "ToolSchema",
+  "type": "object",
+  "required": ["name", "description", "input_schema"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "description": { "type": "string", "minLength": 1 },
+    "input_schema": { "type": "object" },
+    "output_schema": { "type": ["object", "null"] },
+    "idempotent": { "type": "boolean" },
+    "safe": { "type": "boolean" },
+    "destructive": { "type": "boolean" },
+    "category": {
+      "type": "string",
+      "enum": ["system", "tweaks", "benchmark", "knowledge", "state", "i18n", "utility", "general"]
+    },
+    "examples": { "type": "array", "items": { "type": "object" } }
+  }
+}

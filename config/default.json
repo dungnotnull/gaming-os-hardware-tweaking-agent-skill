@@ -1,0 +1,79 @@
+{
+  "_comment": "Canonical configuration profile for gaming-os-hardware-tweaking v1.1.0. Override any value with environment variables (GAMING_TWEAKS_<SECTION>__<KEY> or GAMING_TWEAKS_<TOP_KEY>).",
+  "app_name": "gaming-os-hardware-tweaking",
+  "version": "1.1.0",
+  "environment": "production",
+  "debug": false,
+  "llm": {
+    "provider": "claude",
+    "model": "claude-sonnet-4-5",
+    "max_tokens": 8192,
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "timeout_seconds": 60,
+    "max_retries": 3,
+    "retry_backoff_seconds": 1.5,
+    "fallback_provider": "none",
+    "fallback_model": "",
+    "context_window_tokens": 200000,
+    "reserve_output_tokens": 2048,
+    "system_prompt_path": "references/prompts/system_base.md"
+  },
+  "flags": {
+    "enable_web_search": true,
+    "enable_web_fetch": true,
+    "enable_knowledge_crawl": true,
+    "enable_bilingual_output": true,
+    "enable_chain_of_thought_router": true,
+    "enable_hooks": true,
+    "enable_tool_metrics": true,
+    "enable_state_sync": true,
+    "enable_quality_gate_auto_fix": true,
+    "enable_graceful_degradation": true,
+    "strict_evidence_tiers": true,
+    "enforce_disclosure_before_conclusion": true,
+    "max_router_retries": 2,
+    "max_gate_retries": 2
+  },
+  "knowledge": {
+    "brain_path": "SECOND-KNOWLEDGE-BRAIN.md",
+    "sources": ["arxiv", "semantic_scholar", "core_ac_uk", "rss"],
+    "max_results_per_source": 25,
+    "request_timeout_seconds": 30,
+    "rate_limit_rps": 1.0,
+    "rate_limit_jitter_seconds": 0.5,
+    "parallel_workers": 4,
+    "min_score_threshold": 0.15,
+    "dedup_hash_algorithm": "sha256",
+    "max_gap_fill_queries": 2,
+    "academic_only": false,
+    "news_only": false,
+    "dry_run": false
+  },
+  "logging": {
+    "level": "INFO",
+    "log_dir": "logs",
+    "enable_file": true,
+    "enable_console": true,
+    "json_format": false,
+    "max_file_size_mb": 10,
+    "backup_count": 5,
+    "capture_warnings": true
+  },
+  "orchestration": {
+    "skills_dir": "skills",
+    "default_language": "en",
+    "supported_languages": ["en", "vi"],
+    "execution_order": [
+      "sub-gather-requirements",
+      "sub-evidence-collector",
+      "sub-core-analysis",
+      "sub-knowledge-updater",
+      "sub-advisor"
+    ],
+    "quality_gates": ["U1", "U2", "U3", "U4", "U5", "U6", "G1", "G2", "G3", "G4"],
+    "context_token_budget": 200000,
+    "preserve_history_between_steps": true,
+    "max_degradation_level": 4
+  }
+}

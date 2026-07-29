@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gaming-os-hardware-tweaking/schemas/orchestration_result.schema.json",
+  "title": "OrchestrationResult",
+  "type": "object",
+  "required": ["run_id", "query", "plan", "steps", "ok"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "query": { "type": "string" },
+    "plan": { "$ref": "execution_plan.schema.json" },
+    "steps": { "type": "array" },
+    "state": { "type": "object" },
+    "degradation_level": { "type": "integer", "minimum": 0, "maximum": 4 },
+    "gates": { "type": "array" },
+    "token_usage": { "type": "object" },
+    "elapsed_seconds": { "type": "number" },
+    "ok": { "type": "boolean" },
+    "errors": { "type": "array", "items": { "type": "string" } },
+    "trace": { "type": "array", "items": { "type": "string" } }
+  }
+}

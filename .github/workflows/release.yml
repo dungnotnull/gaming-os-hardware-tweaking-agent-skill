@@ -1,0 +1,62 @@
+# Release Pipeline — gaming-os-hardware-tweaking
+# Builds and publishes to PyPI on tag push
+
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    name: Build & Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install build tools
+        run: pip install build twine
+
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Verify version matches pyproject.toml
+        run: |
+          PROJECT_VERSION=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])")
+          TAG_VERSION="${{ steps.version.outputs.VERSION }}"
+          if [ "$PROJECT_VERSION" != "$TAG_VERSION" ]; then
+            echo "Version mismatch: pyproject.toml=$PROJECT_VERSION, tag=$TAG_VERSION"
+            exit 1
+          fi
+
+      - name: Build package
+        run: python -m build
+
+      - name: Validate with twine
+        run: twine check dist/*
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: v${{ steps.version.outputs.VERSION }}
+          body_path: CHANGELOG.md
+          files: |
+            dist/*.whl
+            dist/*.tar.gz
+          generate_release_notes: true

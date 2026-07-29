@@ -1,0 +1,91 @@
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*.pyo
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+*.pyc
+htmlcov/
+.tox/
+.nox/
+hypothesis/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Linting
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Project-specific
+logs/
+*.log
+*.tmp
+
+# Knowledge cache
+logs/.knowledge_cache/
+
+# Profile backups (user data)
+~/.gaming_tweaks/backups/
+~/.gaming_tweaks/benchmarks/
+
+# Secrets
+.env
+.env.*
+*.secret
+.git-credentials
